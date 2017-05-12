@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="messenger:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/messenger_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="messenger/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="messenger" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

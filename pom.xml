@@ -130,7 +130,7 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.6</version>
                         <configuration>
-                            <outputDirectory>webapp</outputDirectory>
+                            <outputDirectory>webapps</outputDirectory>
                             <warName>ROOT</warName>
                         </configuration>
                     </plugin>
