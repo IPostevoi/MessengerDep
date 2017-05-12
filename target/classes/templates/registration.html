@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Messenger</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link type="text/css" href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.0/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+
+    <script type="application/javascript" th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+
+    <script type="application/javascript" th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+
+    <script type="application/javascript" th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="form-signin" th:object="${user}" th:action="@{/register}" method="post">
+                <h2 class="form-signin-heading">Регистрация</h2>
+                <div>
+                    <label class="sr-only">Имя</label>
+                    <input th:field="*{username}" class="form-control"/>
+                </div>
+                <div>
+                    <label class="sr-only">Пароль</label>
+                    <input type="password" th:field="*{password}" class="form-control"/>
+                </div>
+                <div>
+                    <label class="sr-only">Подтверждение пароля</label>
+                    <input type="password" th:field="*{matchingPassword}" class="form-control"/>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
+            </form>
+
+            <div class="alert alert-success">
+                <strong>
+                    <div th:if="${param.error}">Некорректный ввод регистрационных данных</div>
+                </strong>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>
