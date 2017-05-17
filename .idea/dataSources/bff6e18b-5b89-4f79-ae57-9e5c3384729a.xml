@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="messenger_db@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="messenger_db">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="base"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="SpringDbTest"/>
+    <schema id="8" parent="1" name="sys"/>
+    <table id="9" parent="2" name="Chat"/>
+    <table id="10" parent="2" name="ChatMessages"/>
+    <table id="11" parent="2" name="ChatUsers"/>
+    <table id="12" parent="2" name="Message"/>
+    <table id="13" parent="2" name="User"/>
+    <table id="14" parent="2" name="UserRole"/>
+    <column id="15" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="9" name="adminName">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="18" parent="9" name="Admin___fk">
+      <ColNames>adminName</ColNames>
+    </index>
+    <index id="19" parent="9" name="Chat_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="20" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="21" parent="9" name="Chat_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>Chat_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="22" parent="9" name="Admin___fk">
+      <ColNames>adminName</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="23" parent="10" name="chatId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="10" name="messageId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="25" parent="10" name="ChatMessages_Chat_id_fk">
+      <ColNames>chatId</ColNames>
+    </index>
+    <index id="26" parent="10" name="ChatMessages_Message_id_fk">
+      <ColNames>messageId</ColNames>
+    </index>
+    <foreign-key id="27" parent="10" name="ChatMessages_Chat_id_fk">
+      <ColNames>chatId</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>Chat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="28" parent="10" name="ChatMessages_Message_id_fk">
+      <ColNames>messageId</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>Message</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="11" name="chatId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="11" name="username">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="11" name="chatName">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="32" parent="11" name="ChatUsers_Chat_id_fk">
+      <ColNames>chatId</ColNames>
+    </index>
+    <index id="33" parent="11" name="ChatUsers_User_username_fk">
+      <ColNames>username</ColNames>
+    </index>
+    <foreign-key id="34" parent="11" name="ChatUsers_Chat_id_fk">
+      <ColNames>chatId</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>Chat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="35" parent="11" name="ChatUsers_User_username_fk">
+      <ColNames>username</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="36" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="12" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="12" name="chatId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="12" name="senderName">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="12" name="time">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="41" parent="12" name="Chat___fk">
+      <ColNames>chatId</ColNames>
+    </index>
+    <index id="42" parent="12" name="message_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="43" parent="12" name="User___fk">
+      <ColNames>senderName</ColNames>
+    </index>
+    <key id="44" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="45" parent="12" name="message_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>message_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="46" parent="12" name="Chat___fk">
+      <ColNames>chatId</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>Chat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="12" name="User___fk">
+      <ColNames>senderName</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="48" parent="13" name="username">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="13" name="password">
+      <Position>2</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="13" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="13" name="enabled">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="13" name="User_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="53" parent="13" name="User_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="55" parent="13" name="User_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>User_username_uindex</UnderlyingIndexName>
+    </key>
+    <key id="56" parent="13" name="User_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>User_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="57" parent="14" name="username">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="14" name="role">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="14" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <index id="60" parent="14" name="User_role_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="61" parent="14" name="User_role_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="63" parent="14" name="User_role_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>User_role_username_uindex</UnderlyingIndexName>
+    </key>
+    <key id="64" parent="14" name="User_role_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>User_role_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="65" parent="14" name="Username___fk">
+      <ColNames>username</ColNames>
+      <RefSchemaName>messenger_db</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

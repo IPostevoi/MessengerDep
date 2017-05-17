@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Config {
 
     private static ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+
     private  static UserJDBC userJDBC =
             (UserJDBC)context.getBean("userJDBC");
     private  static ChatJDBC chatJDBC =
@@ -22,6 +23,7 @@ public class Config {
             (ChatUsersJDBC)context.getBean("chatUsersJDBC");
     private  static MessageJDBC messageJDBC =
             (MessageJDBC)context.getBean("messageJDBC");
+
 
     public static UserJDBC getUser() {
         return userJDBC;

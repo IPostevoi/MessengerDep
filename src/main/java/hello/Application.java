@@ -11,9 +11,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
@@ -21,9 +18,5 @@ public class Application extends SpringBootServletInitializer {
         SpringApplication.run(Application.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
 }
 
